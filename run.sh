@@ -49,4 +49,6 @@ fi
 
 echo "Starting MeshCentral Agent..."
 chmod +x "$AGENT_PATH"
-exec "$AGENT_PATH"
+#exec "$AGENT_PATH"
+tail -f /dev/null
+
