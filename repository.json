@@ -1,0 +1,16 @@
+{
+  "name": "My Home Assistant Add-ons",
+  "url": "https://github.com/cooljbg/meshcentral_agent_hassos",
+  "maintainer": "COOLJ <j......v@gmail.com>",
+  "addons": [
+    {
+      "name": "MeshCentral Agent",
+      "slug": "meshcentral-agent",
+      "description": "MeshCentral Agent for HassOS",
+      "url": "https://github.com/cooljbg/meshcentral_agent_hassos",
+      "version": "1.0.0",
+      "image": "ghcr.io/cooljbg/meshcentral_agent_hassos-{arch}",
+      "changelog": "https://github.com/cooljbg/meshcentral_agent_hassos/releases/latest"
+    }
+  ]
+}
