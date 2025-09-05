@@ -1,0 +1,18 @@
+# config.yaml
+name: "MeshCentral Agent"
+version: "1.0.0"
+slug: "meshcentral-agent"
+description: "MeshCentral Agent to connect to a server."
+arch:
+  - aarch64
+  - amd64
+  - armhf
+  - armv7
+map:
+  - ssl:rw
+options:
+  mesh_server_url: ""
+  mesh_install_token: ""
+schema:
+  mesh_server_url: str
+  mesh_install_token: str
