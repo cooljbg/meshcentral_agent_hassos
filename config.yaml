@@ -1,6 +1,6 @@
 # config.yaml
 name: "MeshCentral Agent"
-version: "1.0.0"
+version: "1.0.1"
 slug: "meshcentral-agent"
 description: "MeshCentral Agent to connect to a server."
 arch:
