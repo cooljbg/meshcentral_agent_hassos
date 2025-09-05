@@ -10,4 +10,4 @@ RUN apk update && apk add wget jq curl gcompat libc-utils && rm -rf /var/cache/a
 COPY run.sh /usr/local/bin/run.sh
 RUN chmod +x /usr/local/bin/run.sh
 
-CMD [ "/usr/local/bin/run.sh" ]
+CMD [ "sh", "/usr/local/bin/run.sh" ]
