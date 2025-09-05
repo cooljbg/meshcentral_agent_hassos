@@ -2,7 +2,7 @@
 FROM alpine:latest
 
 # Инсталираме 'wget' и 'jq'
-RUN apk update && apk add wget jq curl
+RUN apk update && apk add wget jq curl gcompat && rm -rf /var/cache/apk/*
 COPY run.sh /usr/local/bin/run.sh
 RUN chmod +x /usr/local/bin/run.sh
 
