@@ -80,6 +80,7 @@ if [ -f "$MSH_FILE" ]; then
     fi
 fi
 
-"$AGENT_PATH" -statedir "$CONFIG_DIR" --meshServiceName="$MESH_SERVICE_NAME" --installedByUser=0
+#"$AGENT_PATH" -statedir "$CONFIG_DIR" --meshServiceName="$MESH_SERVICE_NAME" --installedByUser=0
+"$AGENT_PATH" --meshServiceName="$MESH_SERVICE_NAME" --installedByUser=0
 
 tail -f /dev/null
