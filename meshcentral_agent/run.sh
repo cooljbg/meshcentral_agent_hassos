@@ -11,6 +11,11 @@ if [ -z "$MESH_SERVER_URL" ] || [ -z "$MESH_INSTALL_TOKEN" ]; then
 fi
 
 AGENT_PATH="/data/meshagent"
+CONFIG_DIR="/data/meshagent_data"
+MSH_FILE="$AGENT_PATH.msh"
+
+# Create config dir
+mkdir -p "$CONFIG_DIR"
 
 if [ ! -f "$AGENT_PATH" ]; then
     echo "MeshCentral Agent not found. Starting first-time setup..."
@@ -37,7 +42,7 @@ if [ ! -f "$AGENT_PATH" ]; then
     fi
 
     echo "Downloading device group settings..."
-    wget "$MESH_SERVER_URL/meshsettings?id=$MESH_INSTALL_TOKEN" -O "$AGENT_PATH.msh" || curl -L --output "$AGENT_PATH.msh" "$MESH_SERVER_URL/meshsettings?id=$MESH_INSTALL_TOKEN"
+    wget "$MESH_SERVER_URL/meshsettings?id=$MESH_INSTALL_TOKEN" -O "$MSH_FILE" || curl -L --output "$MSH_FILE" "$MESH_SERVER_URL/meshsettings?id=$MESH_INSTALL_TOKEN"
     
     if [ $? -ne 0 ]; then
         echo "Failed to download settings file."
@@ -49,6 +54,16 @@ fi
 
 echo "Starting MeshCentral Agent..."
 chmod +x "$AGENT_PATH"
-"$AGENT_PATH"
-tail -f /dev/null
 
+# settings file .msh
+MESH_SERVICE_NAME="meshcentral_agent"
+if [ -f "$MSH_FILE" ]; then
+    SERVICE_NAME=$(grep -i "^meshServiceName=" "$MSH_FILE" | cut -d'=' -f2)
+    if [ -n "$SERVICE_NAME" ]; then
+        MESH_SERVICE_NAME="$SERVICE_NAME"
+        echo "Using service name from config: $MESH_SERVICE_NAME"
+    fi
+fi
+
+# STARTING AGENT
+exec "$AGENT_PATH" -statedir "$CONFIG_DIR" --meshServiceName="$MESH_SERVICE_NAME" --installedByUser=0

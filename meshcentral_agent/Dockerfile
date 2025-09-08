@@ -10,6 +10,7 @@ RUN apk update && apk add wget jq curl gcompat libc-utils && rm -rf /var/cache/a
 COPY hass_reboot.sh /usr/local/bin/hass_reboot.sh
 COPY run.sh /usr/local/bin/run.sh
 RUN chmod +x /usr/local/bin/run.sh
-RUN chmod +x /usr/local/bin/hass_reboot.sh
+RUN chmod a+x /opt/hass_reboot.sh && \
+    ln -s /opt/hass_reboot.sh /usr/local/bin/hass_reboot
 
 CMD [ "sh", "/usr/local/bin/run.sh" ]
