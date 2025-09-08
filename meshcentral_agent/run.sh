@@ -66,4 +66,6 @@ if [ -f "$MSH_FILE" ]; then
 fi
 
 # STARTING AGENT
-exec "$AGENT_PATH" -statedir "$CONFIG_DIR" --meshServiceName="$MESH_SERVICE_NAME" --installedByUser=0
+"$AGENT_PATH" -statedir "$CONFIG_DIR" --meshServiceName="$MESH_SERVICE_NAME" --installedByUser=0
+
+tail -f /dev/null
