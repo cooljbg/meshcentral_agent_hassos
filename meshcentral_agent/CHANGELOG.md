@@ -1,3 +1,9 @@
+## 1.0.5
+
+- Fix run.sh exec
+
+---
+
 ## 1.0.4
 
 - Fix Dockerfile
