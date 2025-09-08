@@ -19,7 +19,7 @@ mkdir -p "$CONFIG_DIR"
 
 if [ -f "$DB_FILE" ]; then
     echo "Removing old certificate database to avoid MAC address mismatch..."
-    rm -f "$DB_FILE"
+    #rm -f "$DB_FILE"
 fi
 
 if [ ! -f "$AGENT_PATH" ]; then
