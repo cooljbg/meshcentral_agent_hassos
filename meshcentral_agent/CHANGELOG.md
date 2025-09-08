@@ -1,3 +1,9 @@
+## 1.0.6
+
+- Static NodeID
+
+---
+
 ## 1.0.5
 
 - Fix run.sh exec

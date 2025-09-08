@@ -13,8 +13,8 @@ fi
 AGENT_PATH="/data/meshagent"
 CONFIG_DIR="/data/meshagent_data"
 MSH_FILE="$AGENT_PATH.msh"
+NODEID_FILE="$CONFIG_DIR/nodeid.txt"
 
-# Create config dir
 mkdir -p "$CONFIG_DIR"
 
 if [ ! -f "$AGENT_PATH" ]; then
@@ -55,7 +55,7 @@ fi
 echo "Starting MeshCentral Agent..."
 chmod +x "$AGENT_PATH"
 
-# settings file .msh
+
 MESH_SERVICE_NAME="meshcentral_agent"
 if [ -f "$MSH_FILE" ]; then
     SERVICE_NAME=$(grep -i "^meshServiceName=" "$MSH_FILE" | cut -d'=' -f2)
@@ -65,7 +65,19 @@ if [ -f "$MSH_FILE" ]; then
     fi
 fi
 
-# STARTING AGENT
-"$AGENT_PATH" -statedir "$CONFIG_DIR" --meshServiceName="$MESH_SERVICE_NAME" --installedByUser=0
+if [ ! -f "$NODEID_FILE" ]; then
+    echo "Generating new persistent NodeID..."
+
+    NODEID=$(cat /dev/urandom | tr -dc 'a-f0-9' | fold -w 32 | head -n 1)
+    echo "$NODEID" > "$NODEID_FILE"
+    echo "New NodeID generated: $NODEID"
+else
+    NODEID=$(cat "$NODEID_FILE")
+    echo "Using existing NodeID: $NODEID"
+fi
+
+
+"$AGENT_PATH" -statedir "$CONFIG_DIR" --meshServiceName="$MESH_SERVICE_NAME" --installedByUser=0 --nodeid="$NODEID"
+
 
 tail -f /dev/null
