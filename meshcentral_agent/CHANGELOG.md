@@ -1,3 +1,9 @@
+## 1.0.7
+
+- Delete db file on start
+
+---
+
 ## 1.0.6
 
 - Static NodeID

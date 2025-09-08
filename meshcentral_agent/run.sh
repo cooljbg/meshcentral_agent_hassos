@@ -13,9 +13,14 @@ fi
 AGENT_PATH="/data/meshagent"
 CONFIG_DIR="/data/meshagent_data"
 MSH_FILE="$AGENT_PATH.msh"
-NODEID_FILE="$CONFIG_DIR/nodeid.txt"
+DB_FILE="$CONFIG_DIR/meshagent.db"
 
 mkdir -p "$CONFIG_DIR"
+
+if [ -f "$DB_FILE" ]; then
+    echo "Removing old certificate database to avoid MAC address mismatch..."
+    rm -f "$DB_FILE"
+fi
 
 if [ ! -f "$AGENT_PATH" ]; then
     echo "MeshCentral Agent not found. Starting first-time setup..."
@@ -52,9 +57,19 @@ if [ ! -f "$AGENT_PATH" ]; then
     echo "Initial setup complete."
 fi
 
+if [ ! -f "$MSH_FILE" ]; then
+    echo "Device group settings not found. Downloading..."
+    wget "$MESH_SERVER_URL/meshsettings?id=$MESH_INSTALL_TOKEN" -O "$MSH_FILE" || curl -L --output "$MSH_FILE" "$MESH_SERVER_URL/meshsettings?id=$MESH_INSTALL_TOKEN"
+    
+    if [ $? -ne 0 ]; then
+        echo "Failed to download settings file."
+        exit 1
+    fi
+    echo "Settings downloaded successfully."
+fi
+
 echo "Starting MeshCentral Agent..."
 chmod +x "$AGENT_PATH"
-
 
 MESH_SERVICE_NAME="meshcentral_agent"
 if [ -f "$MSH_FILE" ]; then
@@ -65,19 +80,6 @@ if [ -f "$MSH_FILE" ]; then
     fi
 fi
 
-if [ ! -f "$NODEID_FILE" ]; then
-    echo "Generating new persistent NodeID..."
-
-    NODEID=$(cat /dev/urandom | tr -dc 'a-f0-9' | fold -w 32 | head -n 1)
-    echo "$NODEID" > "$NODEID_FILE"
-    echo "New NodeID generated: $NODEID"
-else
-    NODEID=$(cat "$NODEID_FILE")
-    echo "Using existing NodeID: $NODEID"
-fi
-
-
-"$AGENT_PATH" -statedir "$CONFIG_DIR" --meshServiceName="$MESH_SERVICE_NAME" --installedByUser=0 --nodeid="$NODEID"
-
+"$AGENT_PATH" -statedir "$CONFIG_DIR" --meshServiceName="$MESH_SERVICE_NAME" --installedByUser=0
 
 tail -f /dev/null
