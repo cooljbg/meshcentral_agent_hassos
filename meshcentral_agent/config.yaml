@@ -17,6 +17,4 @@ options:
 schema:
   mesh_server_url: str
   mesh_install_token: str
-  hass_webhook_id:
-    str?:
-      help: "The webhook ID to trigger a host reboot from the add-on. Create a Home Assistant automation with a Webhook trigger and this ID, and call the 'hassio.host_reboot' service as an action."
+  hass_webhook_id: str?
