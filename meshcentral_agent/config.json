@@ -1,6 +1,6 @@
 {
   "name": "MeshCentral Agent",
-  "version": "1.0.9",
+  "version": "1.0.10",
   "slug": "meshcentral_agent",
   "description": "MeshCentral Agent to connect to a server.",
   "arch": [
@@ -9,7 +9,7 @@
     "armhf",
     "armv7"
   ],
-  "map": ["ssl:rw"],
+  "map": ["ssl:rw", "dbus:rw"],
   "options": {
     "mesh_server_url": "",
     "mesh_install_token": "",

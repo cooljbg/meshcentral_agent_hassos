@@ -1,3 +1,15 @@
+## 1.0.10
+
+- dbus:rw
+
+---
+
+## 1.0.9
+
+- dbus
+
+---
+
 ## 1.0.7
 
 - Delete db file on start
