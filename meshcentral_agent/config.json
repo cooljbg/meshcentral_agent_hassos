@@ -1,6 +1,6 @@
 {
   "name": "MeshCentral Agent",
-  "version": "1.0.11",
+  "version": "1.0.12",
   "slug": "meshcentral_agent",
   "description": "MeshCentral Agent to connect to a server.",
   "arch": [
