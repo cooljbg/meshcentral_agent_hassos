@@ -19,5 +19,5 @@ schema:
   hass_webhook_id: str?
 host_network: true
 host_pid: true
-privileged: true
-dbus: true
+full_access: true
+host_dbus: true
