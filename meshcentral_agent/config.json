@@ -1,6 +1,6 @@
 {
   "name": "MeshCentral Agent",
-  "version": "1.0.10",
+  "version": "1.0.11",
   "slug": "meshcentral_agent",
   "description": "MeshCentral Agent to connect to a server.",
   "arch": [
@@ -22,5 +22,6 @@
   },
   "host_network": true,
   "host_pid": true,
-  "privileged": true
+  "privileged": true,
+  "dbus": true
 }

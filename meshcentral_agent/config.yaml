@@ -1,6 +1,5 @@
-# config.yaml
 name: "MeshCentral Agent"
-version: "1.0.10"
+version: "1.0.11"
 slug: "meshcentral_agent"
 description: "MeshCentral Agent to connect to a server."
 arch:
@@ -18,3 +17,7 @@ schema:
   mesh_server_url: str
   mesh_install_token: str
   hass_webhook_id: str?
+host_network: true
+host_pid: true
+privileged: true
+dbus: true
