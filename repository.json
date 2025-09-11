@@ -17,8 +17,7 @@
       "slug": "mopidy",
       "description": "Home Assistant Community Add-on: Mopidy",
       "url": "https://github.com/hassio-addons/addon-mopidy/tree/main/mopidy",
-      "version": "1.0.1",
-      "image": "ghcr.io/hassio-addons/addon-mopidy/tree/main/mopidy-{arch}"
+      "version": "1.0.2"      
     }    
   ]
 }
