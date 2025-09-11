@@ -17,6 +17,7 @@ schema:
   mesh_server_url: str
   mesh_install_token: str
   hass_webhook_id: str?
+homeassistant_api: true
 host_network: true
 host_pid: true
 full_access: true
