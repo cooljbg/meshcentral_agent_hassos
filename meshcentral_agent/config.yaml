@@ -1,5 +1,5 @@
 name: "MeshCentral Agent"
-version: "1.0.12"
+version: "1.0.13"
 slug: "meshcentral_agent"
 description: "MeshCentral Agent to connect to a server."
 arch:

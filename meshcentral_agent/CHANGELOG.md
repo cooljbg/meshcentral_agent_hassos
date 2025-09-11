@@ -1,3 +1,9 @@
+## 1.0.13
+
+- Homeassistant api
+
+---
+
 ## 1.0.12
 
 - dbus:rw

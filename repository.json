@@ -8,9 +8,17 @@
       "slug": "meshcentral_agent",
       "description": "MeshCentral Agent for HassOS",
       "url": "https://github.com/cooljbg/meshcentral_agent_hassos/tree/main/meshcentral_agent",
-      "version": "1.0.12",
+      "version": "1.0.13",
       "image": "ghcr.io/cooljbg/meshcentral_agent_hassos-{arch}",
       "changelog": "https://github.com/cooljbg/meshcentral_agent_hassos/blob/main/meshcentral_agent/CHANGELOG.md"
-    }
+    },
+    {
+      "name": "Mopidy",
+      "slug": "mopidy",
+      "description": "Home Assistant Community Add-on: Mopidy",
+      "url": "https://github.com/hassio-addons/addon-mopidy/tree/main/mopidy",
+      "version": "1.0.1",
+      "image": "ghcr.io/hassio-addons/addon-mopidy/tree/main/mopidy-{arch}"
+    }    
   ]
 }
